@@ -42,10 +42,13 @@ public class DefaultBookServiceImpl implements BookService{
         return bookDao.findByIsbn(isbn)
                 .map(existingBook -> {
                     var bookToUpdate = new Book(
+                            existingBook.id(),
                             existingBook.isbn(),
                             newBook.title(),
                             newBook.author(),
-                            newBook.price());
+                            newBook.price(),
+                            existingBook.version()
+                    );
                     return bookDao.save(bookToUpdate);
                 })
                 .orElseGet(() -> addBookToCatalog(newBook));

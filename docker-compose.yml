@@ -1,0 +1,17 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    container_name: cns_postgres_container
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: cns_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  data:
