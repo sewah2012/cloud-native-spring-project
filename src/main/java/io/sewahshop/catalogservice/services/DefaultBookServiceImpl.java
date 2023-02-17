@@ -47,6 +47,8 @@ public class DefaultBookServiceImpl implements BookService{
                             newBook.title(),
                             newBook.author(),
                             newBook.price(),
+                            existingBook.createdDate(),
+                            existingBook.lastModifiedDate(),
                             existingBook.version()
                     );
                     return bookDao.save(bookToUpdate);
