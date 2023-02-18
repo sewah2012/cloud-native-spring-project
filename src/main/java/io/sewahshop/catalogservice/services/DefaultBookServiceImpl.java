@@ -44,6 +44,7 @@ public class DefaultBookServiceImpl implements BookService{
                     var bookToUpdate = new Book(
                             existingBook.id(),
                             existingBook.isbn(),
+                            existingBook.publisher(),
                             newBook.title(),
                             newBook.author(),
                             newBook.price(),

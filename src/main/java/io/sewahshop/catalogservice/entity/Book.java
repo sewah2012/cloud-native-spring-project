@@ -20,6 +20,8 @@ public record Book(
                 message = "The ISBN format must be valid."
         )
       String isbn,
+//        @NotBlank(message = "The book ISBN must be defined.")
+       String publisher,
         @NotBlank(
                 message = "The book title must be defined."
         )
@@ -40,7 +42,7 @@ public record Book(
         @Version
         int version
 ) {
-    public static Book of(String isbn, String title, String author, Double price) {
-        return new Book(null, isbn, title, author,price, null, null, 0);
+    public static Book of(String isbn, String publisher, String title, String author, Double price) {
+        return new Book(null, isbn, publisher, title, author,price, null, null, 0);
     }
 }

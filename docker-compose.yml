@@ -9,9 +9,9 @@ services:
       POSTGRES_DB: cns_db
     ports:
       - "5435:5432"
-    volumes:
-      - data:/var/lib/postgresql/data
+#    volumes:
+#      - data:/var/lib/postgresql/data
     restart: unless-stopped
 
-volumes:
-  data:
+#volumes:
+#  data:
