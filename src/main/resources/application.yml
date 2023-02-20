@@ -21,7 +21,8 @@ spring:
       maximum-pool-size: 5
   config:
 #    add optional if you want to run the application without the config server: optional:configserver:.
-    import: "configserver:"
+#    import: "configserver:"
+    import: "optional:configserver:"
   cloud:
     config:
       uri: ${SPRING_CLOUD_CONFIG_URI:http://localhost:8888}
