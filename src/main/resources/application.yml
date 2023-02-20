@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: ${PORT:9001}
   tomcat:
     connection-timeout: 2s
     keep-alive-timeout: 15s
@@ -13,9 +13,9 @@ spring:
 #    init:
 #      mode: always
   datasource:
-    username: user
-    password: password
-    url: jdbc:postgresql://localhost:5435/cns_db
+    username: ${DATASOURCE_USERNAME:user}
+    password: ${DATASOURCE_PASSWORD:password}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5435/cns_db}
     hikari:
       connection-timeout: 2000
       maximum-pool-size: 5
@@ -24,7 +24,7 @@ spring:
     import: "configserver:"
   cloud:
     config:
-      uri: http://localhost:8888
+      uri: ${SPRING_CLOUD_CONFIG_URI:http://localhost:8888}
       request-connect-timeout: 5000
       request-read-timeout: 5000
       fail-fast: true
