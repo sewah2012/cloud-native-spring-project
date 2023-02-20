@@ -3,6 +3,10 @@ on:
   push:
     branches: [ "master" ]
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: sewah2012/cloud-native-spring-project
+  VERSION: latest
 jobs:
   build:
     name: build and test
@@ -37,3 +41,27 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
+
+    package:
+      name: Package and Publish
+      if: ${{ github.ref == 'refs/heads/master'}}
+      needs: [ build ]
+      runs-on: ubuntu-22.04
+      permissions:
+        contents: read
+        packages: write
+        security-events: write
+      steps:
+        - name: Checkout source code
+          uses: actions/checkout@v3
+        - name: Setup JDK
+          uses: actions/setup-java@v3
+          with:
+            distribution: temurin
+            java-version: 17
+            cache: gradle
+        - name: Build container image
+          run: | 
+            chmod +x gradlew 
+            ./gradlew bootBuildImage \
+            --imageName ${{env.REGISTRY}}/${{env.IMAGE_NAME}}:${{env.VERSION}}
