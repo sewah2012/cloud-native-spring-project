@@ -13,5 +13,30 @@ services:
 #      - data:/var/lib/postgresql/data
     restart: unless-stopped
 
+  catalog-service:
+    image: ghcr.io/sewah2012/cloud-native-spring-project:latest
+    container_name: catalog_service_container
+    environment:
+      SPRING_PROFILES_ACTIVE: testdata
+      DATASOURSE_USERNAME: user
+      DATASOURSE_PASSWORD: password
+      DATASOURCE_URL: jdbc:postgresql://postgres:5432/cns_db
+      SPRING_CLOUD_CONFIG_URI: http://config-service:8888
+
+    ports:
+      - "9001:9001"
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - config-service
+
+  config-service:
+    image: ghcr.io/sewah2012/cloud-native-spring-config-service:latest
+    container_name: config_service_container
+    environment:
+      CONFIGS_LOCATION: https://github.com/sewah2012/cloud-native-project-configs
+    ports:
+      - "8888:8888"
+    restart: unless-stopped
 #volumes:
 #  data:
