@@ -1,6 +1,6 @@
 package io.sewahshop.catalogservice.dao;
 
-import io.sewahshop.catalogservice.entity.Book;
+import io.sewahshop.catalogservice.domains.Book;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;

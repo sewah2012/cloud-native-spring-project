@@ -1,6 +1,6 @@
 package io.sewahshop.catalogservice.controllers;
 
-import io.sewahshop.catalogservice.entity.Book;
+import io.sewahshop.catalogservice.domains.Book;
 import io.sewahshop.catalogservice.services.BookService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -18,7 +18,7 @@ public class BookController {
         return bookService.viewBookList();
     }
 
-    @GetMapping("{isbn}")
+    @GetMapping("/{isbn}")
     public Book getByIsbn(@PathVariable String isbn) {
         return bookService.viewBookDetails(isbn);
     }
@@ -29,13 +29,13 @@ public class BookController {
         return bookService.addBookToCatalog(book);
     }
 
-    @DeleteMapping("{isbn}")
+    @DeleteMapping("/{isbn}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable String isbn) {
         bookService.removeBookFromCatalog(isbn);
     }
 
-    @PutMapping("{isbn}")
+    @PutMapping("/{isbn}")
     public Book put(@PathVariable String isbn, @Valid @RequestBody Book book) {
         return bookService.editBookDetails(isbn, book);
     }

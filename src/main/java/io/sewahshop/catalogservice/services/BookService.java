@@ -1,8 +1,6 @@
 package io.sewahshop.catalogservice.services;
 
-import io.sewahshop.catalogservice.entity.Book;
-
-import java.util.Optional;
+import io.sewahshop.catalogservice.domains.Book;
 
 public interface BookService {
     Iterable<Book> viewBookList();

@@ -1,4 +1,4 @@
-package io.sewahshop.catalogservice.entity;
+package io.sewahshop.catalogservice.domains;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

@@ -1,8 +1,7 @@
 package io.sewahshop.catalogservice.dao;
 
-import io.sewahshop.catalogservice.entity.Book;
+import io.sewahshop.catalogservice.domains.Book;
 
-import java.util.Iterator;
 import java.util.Optional;
 
 public interface BookDao {

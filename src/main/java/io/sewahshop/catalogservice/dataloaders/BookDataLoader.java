@@ -1,7 +1,6 @@
 package io.sewahshop.catalogservice.dataloaders;
 
-import io.sewahshop.catalogservice.dao.BookDao;
-import io.sewahshop.catalogservice.entity.Book;
+import io.sewahshop.catalogservice.domains.Book;
 import io.sewahshop.catalogservice.repositories.BookRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;

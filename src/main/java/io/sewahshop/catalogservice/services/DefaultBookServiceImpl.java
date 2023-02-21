@@ -1,16 +1,16 @@
 package io.sewahshop.catalogservice.services;
 
-import io.sewahshop.catalogservice.dao.BookDao;
-import io.sewahshop.catalogservice.entity.Book;
+import io.sewahshop.catalogservice.domains.Book;
 import io.sewahshop.catalogservice.exceptions.errors.BookAlreadyExistsException;
 import io.sewahshop.catalogservice.exceptions.errors.BookNotFoundException;
+import io.sewahshop.catalogservice.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DefaultBookServiceImpl implements BookService{
-    private final BookDao bookDao;
+    private final BookRepository bookDao;
 
-    DefaultBookServiceImpl(BookDao bookDao) {
+    DefaultBookServiceImpl(BookRepository bookDao) {
         this.bookDao = bookDao;
     }
     @Override
