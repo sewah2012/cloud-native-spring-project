@@ -1,10 +1,12 @@
 # Build
 custom_build(
     # Name of the container image
-    ref = 'catalog-service',
+    'catalog-service',
 
     # Command to build the container image
-    command = 'gradlew bootBuildImage --imageName $EXPECTED_REF',
+    'gradlew bootBuildImage',
+
+    tag = 'latest',
 
     # Files to watch that trigger a new build
     deps = ['build.gradle', 'src']

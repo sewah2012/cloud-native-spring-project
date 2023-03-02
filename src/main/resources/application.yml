@@ -18,7 +18,7 @@ spring:
   datasource:
     username: ${DATASOURCE_USERNAME:user}
     password: ${DATASOURCE_PASSWORD:password}
-    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5435/cns_db}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5435/polardb_catalog}
     hikari:
       connection-timeout: 2000
       maximum-pool-size: 5
