@@ -50,6 +50,8 @@ public class DefaultBookServiceImpl implements BookService{
                             newBook.price(),
                             existingBook.createdDate(),
                             existingBook.lastModifiedDate(),
+                            existingBook.createdBy(),
+                            existingBook.lastModifiedBy(),
                             existingBook.version()
                     );
                     return bookDao.save(bookToUpdate);
