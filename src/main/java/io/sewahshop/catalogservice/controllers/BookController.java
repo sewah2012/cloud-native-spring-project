@@ -3,18 +3,22 @@ package io.sewahshop.catalogservice.controllers;
 import io.sewahshop.catalogservice.domains.Book;
 import io.sewahshop.catalogservice.services.BookService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/books")
 public class BookController {
+    Logger log = LoggerFactory.getLogger(BookController.class);
     private final BookService bookService;
 
     BookController(BookService bookService) {this.bookService = bookService;}
 
     @GetMapping
     public Iterable<Book> get() {
+        log.info("Getting book list");
         return bookService.viewBookList();
     }
 

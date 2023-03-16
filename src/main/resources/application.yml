@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:9001}
+  port: 9001
   tomcat:
     connection-timeout: 2s
     keep-alive-timeout: 15s
@@ -25,9 +25,11 @@ spring:
   config:
 #    add optional if you want to run the application without the config server: optional:configserver:.
 #    import: "configserver:"
-    import: "optional:configserver:"
+#    import: "optional:configserver:"
+    import: ""
   cloud:
     config:
+      enabled: false
       uri: ${SPRING_CLOUD_CONFIG_URI:http://localhost:8888}
       request-connect-timeout: 5000
       request-read-timeout: 5000
@@ -41,12 +43,25 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/PolarBookshop
+          issuer-uri: ${JWT_ISSUER_URI:http://localhost:8080/realms/PolarBookshop}
 management:
   endpoints:
     web:
       exposure:
-        include: refresh
+        include: refresh, health, prometheus
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
 
 my:
   greeting: Welcome to the local book catalog!
