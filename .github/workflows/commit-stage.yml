@@ -54,7 +54,7 @@ jobs:
             kustomize build k8s | kubeval --strict -
   package:
     name: Package and Publish
-    if: ${{ github.ref == 'refs/heads/master'}}
+    if: ${{ github.ref == 'refs/heads/main'}}
     needs: [ build ]
     runs-on: ubuntu-22.04
     permissions:
