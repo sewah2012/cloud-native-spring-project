@@ -10,7 +10,7 @@ env:
   OWNER: sewah2012
   REGISTRY: ghcr.io
   APP_REPO: cloud-native-spring-project
-  DEPLOY_REPO: polar-deployment
+  DEPLOY_REPO: cloud-native-spring-deployment
   VERSION: ${{github.sha}}
 
 jobs:
